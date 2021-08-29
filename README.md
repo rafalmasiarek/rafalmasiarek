@@ -1,4 +1,4 @@
-Hello <span class="wave">👋</span>
+Hello <span class="hand-waving">👋</span>
 
 My name is Rafal Masiarek.
 
