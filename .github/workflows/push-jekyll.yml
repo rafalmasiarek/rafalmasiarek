@@ -1,0 +1,20 @@
+name: Rebuild Jekyll from Circle CI
+
+# Controls when the workflow will run
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Trigger Circle CI API to recreate my jekyll when new commit on rafalmasiarek/README.md
+        run: curl --header 'authorization: Basic ${{ secrets.CIRCLE_CI_TOKEN }}' --header 'Accept: application/json' --header 'Content-Type: application/json' --data '{"branch":"${{ secrets.PROJECT_DEFAULT_BRANCH }}"}' https://circleci.com/api/v2/project/gh/${{ secrets.PROJECT_NAME }}/pipeline
