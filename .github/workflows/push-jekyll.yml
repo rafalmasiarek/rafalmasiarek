@@ -19,7 +19,6 @@ jobs:
       - name: Trigger Circle CI API to recreate my jekyll when new commit on rafalmasiarek/README.md
         run: |
           curl \
-             -X GET \
              --user ${{ secrets.CIRCLE_CI_TOKEN }}: \
              --header 'Accept: application/json' \
              --header 'Content-Type: application/json' \
