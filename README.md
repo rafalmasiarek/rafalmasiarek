@@ -1,4 +1,4 @@
-Hello <span class="hand-waving">👋</span>
+Hello <span class="hand-waving d-emoji">👋</span>
 
 My name is Rafal Masiarek.
 
