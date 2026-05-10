@@ -224,11 +224,12 @@ def categorize(repo: dict[str, Any], topics: list[str]) -> str:
 def repo_link(repo_name: str) -> str:
     return f"[{repo_name}](https://github.com/{OWNER}/{repo_name})"
 
-
 def build_projects_section(groups: dict[str, list[str]]) -> str:
     lines = [
         START_MARKER,
-        "## My Projects",
+        '<h2 class="projects-heading"><span aria-hidden="true">&gt;</span> My Projects</h2>',
+        "",
+        "You can find all my projects [here](https://masiarek.pl/projects).",
         "",
     ]
 
@@ -253,7 +254,6 @@ def build_projects_section(groups: dict[str, list[str]]) -> str:
     lines.append(END_MARKER)
 
     return "\n".join(lines)
-
 
 def replace_projects_section(readme: str, section: str) -> str:
     if START_MARKER not in readme or END_MARKER not in readme:
