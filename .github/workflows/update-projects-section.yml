@@ -1,0 +1,37 @@
+name: Update projects section
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Every Monday at 06:15 UTC
+    - cron: "15 6 * * 1"
+
+permissions:
+  contents: write
+
+jobs:
+  update-projects-section:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout profile repository
+        uses: actions/checkout@v4
+
+      - name: Generate projects section
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/update-projects-section.py
+
+      - name: Commit updated README
+        run: |
+          if git diff --quiet README.md; then
+            echo "No README changes."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add README.md
+          git commit -m "Update projects section"
+          git push
