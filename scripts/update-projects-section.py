@@ -245,8 +245,7 @@ def build_projects_section(groups: dict[str, list[str]]) -> str:
 
         lines.extend(
             [
-                f"**{category}**  ",
-                links,
+                f"**{category}:** {links}",
                 "",
             ]
         )
