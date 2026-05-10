@@ -9,6 +9,7 @@ import urllib.request
 from collections import defaultdict
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlencode
 
 
 OWNER = "rafalmasiarek"
@@ -21,7 +22,8 @@ EXCLUDED_REPOS = {
     "rafalmasiarek",
     "rafalmasiarek.github.io",
     "cdn.masiarek.dev",
-    "iledopolandrockfestival.pl"
+    "iledopolandrockfestival.pl",
+    "shared-config",
 }
 
 CATEGORY_ORDER = [
@@ -223,15 +225,25 @@ def categorize(repo: dict[str, Any], topics: list[str]) -> str:
     return "Other"
 
 
-def repo_link(repo_name: str) -> str:
-    return f"[{repo_name}](https://github.com/{OWNER}/{repo_name})"
+def repo_link(repo_name: str, *params: dict[str, str]) -> str:
+    url = f"https://github.com/{OWNER}/{repo_name}"
+
+    if params:
+        url = f"{url}?{urlencode(params[0])}"
+
+    return (
+        f'<a href="{url}" target="_blank" rel="noopener noreferrer">'
+        f"{repo_name}"
+        f"</a>"
+    )
+
 
 def build_projects_section(groups: dict[str, list[str]]) -> str:
     lines = [
         START_MARKER,
         '<h2 class="projects-heading"><span aria-hidden="true">&gt;</span> My Projects</h2>',
         "",
-        "You can find all my projects [here](https://masiarek.pl/projects).",
+        'You can find all my projects <a href="https://masiarek.pl/i-love-opensource/">here</a>.',
         "",
     ]
 
@@ -241,8 +253,16 @@ def build_projects_section(groups: dict[str, list[str]]) -> str:
         if not repos:
             continue
 
+        link_params = {
+            "utm_source": "masiarek.pl",
+            "utm_medium": "homepage",
+            "utm_campaign": "projects",
+            "utm_content": category.lower().replace(" ", "-"),
+            "_from": "masiarek.pl",
+        }
+
         links = " · ".join(
-            repo_link(repo_name)
+            repo_link(repo_name, link_params)
             for repo_name in sorted(repos, key=str.lower)
         )
 
@@ -256,6 +276,7 @@ def build_projects_section(groups: dict[str, list[str]]) -> str:
     lines.append(END_MARKER)
 
     return "\n".join(lines)
+
 
 def replace_projects_section(readme: str, section: str) -> str:
     if START_MARKER not in readme or END_MARKER not in readme:
