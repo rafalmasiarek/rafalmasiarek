@@ -11,10 +11,19 @@ on:
     paths:
       - README.md
 
+  workflow_run:
+    workflows: ["Update projects section"]
+    types:
+      - completed
+
   workflow_dispatch:
 
 jobs:
   trigger-pages-deploy:
+    if: >
+      github.event_name != 'workflow_run' ||
+      github.event.workflow_run.conclusion == 'success'
+
     runs-on: ubuntu-latest
 
     steps:
@@ -44,7 +53,9 @@ jobs:
           )"
 
           echo "GitHub API status: ${status_code}"
+          echo "GitHub API response:"
           cat "$response_file"
+          echo
 
           if [ "$status_code" -lt 200 ] || [ "$status_code" -ge 300 ]; then
             exit 1
