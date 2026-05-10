@@ -20,6 +20,8 @@ END_MARKER = "<!-- projects:end -->"
 EXCLUDED_REPOS = {
     "rafalmasiarek",
     "rafalmasiarek.github.io",
+    "cdn.masiarek.dev",
+    "iledopolandrockfestival.pl"
 }
 
 CATEGORY_ORDER = [
