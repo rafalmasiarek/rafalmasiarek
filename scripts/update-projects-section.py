@@ -241,10 +241,10 @@ def repo_link(repo_name: str, *params: dict[str, str]) -> str:
 def build_projects_section(groups: dict[str, list[str]]) -> str:
     lines = [
         START_MARKER,
-        '<h2 class="projects-heading"><span aria-hidden="true">&gt;</span> My Projects</h2>',
-        "",
-        'You can find all my projects <a href="https://masiarek.pl/i-love-opensource/">here</a>.',
-        "",
+        '<h2 class="projects-heading">My Projects</h2>',
+#        "",
+#        'You can find all my projects <a href="https://masiarek.pl/i-love-opensource/">here</a>.',
+#        "",
     ]
 
     for category in CATEGORY_ORDER:
