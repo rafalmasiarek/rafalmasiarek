@@ -7,10 +7,7 @@ I am devops, linux system administration and developer strongly focused on autom
 Passionate about creating clean server environments built using widely applied practices avoiding temporary, hackish solutions. Very well versed in all things Linux and familiar with modern cloud technologies.
 
 <!-- projects:start -->
-<h2 class="projects-heading"><span aria-hidden="true">&gt;</span> My Projects</h2>
-
-You can find all my projects <a href="https://masiarek.pl/i-love-opensource/">here</a>.
-
+<h2 class="projects-heading">My Projects</h2>
 **Infrastructure:** <a href="https://github.com/rafalmasiarek/terraform-cloudflare-r2-backend-bootstrap?utm_source=masiarek.pl&utm_medium=homepage&utm_campaign=projects&utm_content=infrastructure&_from=masiarek.pl" target="_blank" rel="noopener noreferrer">terraform-cloudflare-r2-backend-bootstrap</a> · <a href="https://github.com/rafalmasiarek/terraform-cloudflare-r2-bucket?utm_source=masiarek.pl&utm_medium=homepage&utm_campaign=projects&utm_content=infrastructure&_from=masiarek.pl" target="_blank" rel="noopener noreferrer">terraform-cloudflare-r2-bucket</a>
 
 **Docker:** <a href="https://github.com/rafalmasiarek/docker-sftp?utm_source=masiarek.pl&utm_medium=homepage&utm_campaign=projects&utm_content=docker&_from=masiarek.pl" target="_blank" rel="noopener noreferrer">docker-sftp</a> · <a href="https://github.com/rafalmasiarek/docker-sshd?utm_source=masiarek.pl&utm_medium=homepage&utm_campaign=projects&utm_content=docker&_from=masiarek.pl" target="_blank" rel="noopener noreferrer">docker-sshd</a> · <a href="https://github.com/rafalmasiarek/py-sanityctl?utm_source=masiarek.pl&utm_medium=homepage&utm_campaign=projects&utm_content=docker&_from=masiarek.pl" target="_blank" rel="noopener noreferrer">py-sanityctl</a>
