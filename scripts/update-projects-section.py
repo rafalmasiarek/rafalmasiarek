@@ -242,7 +242,7 @@ def build_projects_section(groups: dict[str, list[str]]) -> str:
     lines = [
         START_MARKER,
         '<h2 class="projects-heading">My Projects</h2>',
-#        "",
+        "",
 #        'You can find all my projects <a href="https://masiarek.pl/i-love-opensource/">here</a>.',
 #        "",
     ]
