@@ -19,8 +19,6 @@ Passionate about creating clean server environments built using widely applied p
 
 **Python:** <a href="https://github.com/rafalmasiarek/pkicli?utm_source=masiarek.pl&utm_medium=homepage&utm_campaign=projects&utm_content=python&_from=masiarek.pl" target="_blank" rel="noopener noreferrer">pkicli</a> · <a href="https://github.com/rafalmasiarek/py-cjson?utm_source=masiarek.pl&utm_medium=homepage&utm_campaign=projects&utm_content=python&_from=masiarek.pl" target="_blank" rel="noopener noreferrer">py-cjson</a> · <a href="https://github.com/rafalmasiarek/py-sanityctl?utm_source=masiarek.pl&utm_medium=homepage&utm_campaign=projects&utm_content=python&_from=masiarek.pl" target="_blank" rel="noopener noreferrer">py-sanityctl</a>
 
-**Go:** <a href="https://github.com/rafalmasiarek/porta?utm_source=masiarek.pl&utm_medium=homepage&utm_campaign=projects&utm_content=go&_from=masiarek.pl" target="_blank" rel="noopener noreferrer">porta</a>
-
 **Tools:** <a href="https://github.com/rafalmasiarek/oh-my-zsh-quotes-plugin?utm_source=masiarek.pl&utm_medium=homepage&utm_campaign=projects&utm_content=tools&_from=masiarek.pl" target="_blank" rel="noopener noreferrer">oh-my-zsh-quotes-plugin</a>
 
 <!-- projects:end -->
