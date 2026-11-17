@@ -95,10 +95,21 @@ CATEGORY_RULES = [
     {
         "category": "Tools",
         "any": [
-            {"topic": r"^(cli|tool|tools|automation|utility|utilities)$"},
+            {"topic": r"^(tool|tools)$"},
             {"language": r"^(Shell|Makefile)$"},
         ],
     },
+]
+
+TOPIC_OVERRIDE_ORDER = [
+    "Infrastructure",
+    "Ansible",
+    "Docker",
+    "PHP",
+    "JavaScript",
+    "Python",
+    "Tools",
+    "Go",
 ]
 
 
@@ -198,31 +209,38 @@ def field_matches(repo: dict[str, Any], topics: list[str], condition: dict[str, 
     return False
 
 
-def rule_matches(repo: dict[str, Any], topics: list[str], rule: dict[str, Any]) -> bool:
-    any_conditions = rule.get("any", [])
-    all_conditions = rule.get("all", [])
+def rule_matches_fields(
+    repo: dict[str, Any],
+    topics: list[str],
+    rule: dict[str, Any],
+    fields: set[str],
+) -> bool:
+    conditions = [
+        condition
+        for condition in rule.get("any", [])
+        if set(condition) & fields
+    ]
 
-    if any_conditions and not any(
-        field_matches(repo, topics, condition)
-        for condition in any_conditions
-    ):
-        return False
-
-    if all_conditions and not all(
-        field_matches(repo, topics, condition)
-        for condition in all_conditions
-    ):
-        return False
-
-    return True
+    return any(field_matches(repo, topics, condition) for condition in conditions)
 
 
 def categorize(repo: dict[str, Any], topics: list[str]) -> str:
-    for rule in CATEGORY_RULES:
-        if rule_matches(repo, topics, rule):
-            return rule["category"]
+    rules_by_category = {rule["category"]: rule for rule in CATEGORY_RULES}
 
-    return "Other"
+    name_category = None
+
+    for rule in CATEGORY_RULES:
+        if rule_matches_fields(repo, topics, rule, {"name"}):
+            name_category = rule["category"]
+            break
+
+    for category in TOPIC_OVERRIDE_ORDER:
+        rule = rules_by_category[category]
+
+        if rule_matches_fields(repo, topics, rule, {"topic", "language"}):
+            return category
+
+    return name_category or "Other"
 
 
 def repo_link(repo_name: str, *params: dict[str, str]) -> str:
